@@ -5,22 +5,27 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Data
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class EmployeeDto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long id;
 
-    public EmployeeDto(Long id, String name, Long salary) {
+    public EmployeeDto(String name, Long salary) {
         this.name = name;
         this.salary = salary;
-        this.id =id;
+        this.id =null;
+    }
+
+    public EmployeeDto(Long id, String name, Long salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
     }
 
     public EmployeeDto() {
@@ -53,7 +58,7 @@ public class EmployeeDto {
         return id;
     }
 
-    @NotBlank(message = "Employee Salary")
+    @NotNull
     private Long salary;
 
 }

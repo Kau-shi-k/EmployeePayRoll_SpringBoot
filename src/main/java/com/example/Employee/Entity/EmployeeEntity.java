@@ -2,6 +2,7 @@ package com.example.Employee.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
@@ -13,9 +14,6 @@ public class EmployeeEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    public EmployeeEntity(){
-
-    }
     public EmployeeEntity(Long id, String name, Long salary) {
         this.id = id;
         this.name = name;
@@ -25,7 +23,7 @@ public class EmployeeEntity {
     @NotBlank(message =  "Employee Name")
     private String name;
 
-    @NotBlank(message = "Employee Salary")
+    @NotNull
     private Long salary;
 
 
